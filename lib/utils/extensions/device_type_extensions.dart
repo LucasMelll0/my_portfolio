@@ -19,9 +19,9 @@ extension DeviceTypeExtension on DeviceType {
   int getMaxWidth() {
     switch (this) {
       case DeviceType.mobile:
-        return 480;
+        return 580;
       case DeviceType.ipad:
-        return 768;
+        return 868;
       case DeviceType.smallScreen:
         return 1024;
       case DeviceType.largeScreen:

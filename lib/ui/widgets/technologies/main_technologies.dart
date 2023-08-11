@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_portifolio/res/dimens.dart';
-import 'package:my_portifolio/res/strings.dart';
-import 'package:my_portifolio/utils/device_type.dart';
+import 'package:my_portifolio/ui/widgets/technologies/main_technologies_grid.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 
+import '../../../res/dimens.dart';
+import '../../../res/strings.dart';
+import '../../../utils/device_type.dart';
 import '../common/gradient_text.dart';
 
-class AboutSection extends StatelessWidget {
-  final BoxConstraints constraints;
+class MainTechnologies extends StatelessWidget {
+  const MainTechnologies({super.key, required this.constraints});
 
-  const AboutSection({super.key, required this.constraints});
+  final BoxConstraints constraints;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class AboutSection extends StatelessWidget {
                 : CrossAxisAlignment.start,
         children: [
           GradientText(
-            text: StringRes.aboutTitle,
+            text: StringRes.mainTechnologiesTitle,
             gradient: LinearGradient(colors: [
               theme.colorScheme.primary,
               theme.colorScheme.secondary,
@@ -37,24 +38,10 @@ class AboutSection extends StatelessWidget {
                     color: theme.colorScheme.primary,
                     fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: largePadding,),
-          Text(
-            StringRes.about,
-
-            style: constraints.maxWidth < DeviceType.ipad.getMaxWidth()
-                ? theme.textTheme.bodyMedium
-                : theme.textTheme.bodyLarge,
-            softWrap: true,
-            textAlign: _getTextAlign(constraints.maxWidth),
-          )
+          const SizedBox(height: largePadding),
+          MainTechnologiesGrid(constraints: constraints)
         ],
       ),
     );
-  }
-
-  _getTextAlign(double screenWidth) {
-    return screenWidth < DeviceType.mobile.getMaxWidth()
-        ? TextAlign.center
-        : TextAlign.start;
   }
 }

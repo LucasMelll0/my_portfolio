@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portifolio/ui/widgets/about/about_section.dart';
 import 'package:my_portifolio/ui/widgets/intro/intro_section.dart';
+import 'package:my_portifolio/ui/widgets/technologies/main_technologies.dart';
 import 'package:my_portifolio/utils/device_type.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 
@@ -43,15 +44,34 @@ class _HomePageState extends State<HomePage> {
                       : CrossAxisAlignment.start,
               children: [
                 IntroSection(constraints: constraints),
-                SizedBox(
-                  height: constraints.maxHeight * .30,
-                ),
-                AboutSection(constraints: constraints)
+                _getDivider(constraints),
+                AboutSection(constraints: constraints),
+                _getDivider(constraints),
+                MainTechnologies(constraints: constraints)
               ],
             ),
           ),
         ),
       );
     });
+  }
+
+  Widget _getDivider(BoxConstraints constraints) {
+    return Column(
+      children: [
+        SizedBox(
+          height: constraints.maxHeight * .30,
+        ),
+        Divider(
+          thickness: 1,
+          endIndent: constraints.maxWidth < DeviceType.mobile.getMaxWidth()
+              ? null
+              : constraints.maxWidth * .30,
+        ),
+        SizedBox(
+          height: constraints.maxHeight * .30,
+        )
+      ],
+    );
   }
 }
