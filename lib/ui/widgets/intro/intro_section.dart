@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portifolio/ui/widgets/common/gradient_text.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -38,8 +39,13 @@ class IntroSection extends StatelessWidget {
                 const SizedBox(
                   height: defaultPadding,
                 ),
-                Text(
-                  StringRes.myName,
+                GradientText(
+                  text: StringRes.myName,
+                  gradient: LinearGradient(colors: [
+                    theme.colorScheme.primary,
+                    theme.colorScheme.secondary,
+                    theme.colorScheme.tertiary
+                  ]),
                   style: (constraints.maxWidth < DeviceType.ipad.getMaxWidth()
                           ? theme.textTheme.displaySmall
                           : theme.textTheme.displayMedium)
