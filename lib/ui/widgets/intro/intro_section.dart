@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portifolio/ui/widgets/intro/intro_photo.dart';
 import 'package:my_portifolio/ui/widgets/intro/intro_text.dart';
+import 'package:my_portifolio/utils/extensions/context_extensions.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 
 import '../../../res/dimens.dart';
@@ -14,6 +15,7 @@ class IntroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: context.height,
       child: constraints.maxWidth < DeviceType.mobile.getMaxWidth()
           ? Column(
               children: [
@@ -24,6 +26,7 @@ class IntroSection extends StatelessWidget {
             )
           : Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
                 Flexible(child: IntroText(constraints: constraints)),
