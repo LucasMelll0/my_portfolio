@@ -27,7 +27,9 @@ class _MainTechnologiesItemState extends State<MainTechnologiesItem> {
     itemColor ?? {itemColor = theme.colorScheme.surfaceVariant};
     contentColor ?? {contentColor = theme.colorScheme.onSurfaceVariant};
 
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(seconds: 1),
+      curve: Curves.fastOutSlowIn,
       padding: const EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
@@ -41,7 +43,7 @@ class _MainTechnologiesItemState extends State<MainTechnologiesItem> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              height: 48,
+              height: defaultImageItemSize,
               widget.image,
               color: contentColor,
             ),

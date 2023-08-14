@@ -17,23 +17,20 @@ class IntroText extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Column(
-      crossAxisAlignment:
-      constraints.maxWidth < DeviceType.mobile.getMaxWidth()
+      crossAxisAlignment: constraints.maxWidth < DeviceType.mobile.getMaxWidth()
           ? CrossAxisAlignment.center
           : CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
           StringRes.presentation,
-          style:
-          constraints.maxWidth < DeviceType.ipad.getMaxWidth()
+          style: constraints.maxWidth < DeviceType.ipad.getMaxWidth()
               ? theme.textTheme.titleSmall
               : theme.textTheme.titleLarge,
           textAlign: _getTextAlign(constraints.maxWidth),
           softWrap: true,
         ),
-        const SizedBox(
-          height: defaultPadding,
-        ),
+        const SizedBox(height: defaultPadding),
         GradientText(
           text: StringRes.myName,
           gradient: LinearGradient(colors: [
@@ -41,18 +38,15 @@ class IntroText extends StatelessWidget {
             theme.colorScheme.secondary,
             theme.colorScheme.tertiary
           ]),
-          style: (constraints.maxWidth <
-              DeviceType.ipad.getMaxWidth()
-              ? theme.textTheme.displaySmall
-              : theme.textTheme.displayMedium)
+          style: (constraints.maxWidth < DeviceType.ipad.getMaxWidth()
+                  ? theme.textTheme.displaySmall
+                  : theme.textTheme.displayMedium)
               ?.copyWith(color: theme.colorScheme.primary),
           textAlign: _getTextAlign(constraints.maxWidth),
           softWrap: true,
         ),
         introMessage(constraints, theme),
-        const SizedBox(
-          height: defaultPadding,
-        ),
+        const SizedBox(height: defaultPadding),
         socialLinks()
       ],
     );
@@ -73,9 +67,8 @@ class IntroText extends StatelessWidget {
           width: defaultPadding,
         ),
         GestureDetector(
-          onTap: () =>
-              launchUrlFromString(
-                  "https://www.linkedin.com/in/lucas-mello-a43887188/"),
+          onTap: () => launchUrlFromString(
+              "https://www.linkedin.com/in/lucas-mello-a43887188/"),
           child: Image.network(
               width: 40,
               "https://img.icons8.com/metro/308/ffffff/linkedin.png"),
