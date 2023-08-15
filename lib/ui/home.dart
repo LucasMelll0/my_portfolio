@@ -6,6 +6,7 @@ import 'package:my_portifolio/ui/widgets/intro/social_network_list.dart';
 import 'package:my_portifolio/ui/widgets/projects/projects_section.dart';
 import 'package:my_portifolio/ui/widgets/technologies/main_technologies.dart';
 import 'package:my_portifolio/utils/device_type.dart';
+import 'package:my_portifolio/utils/extensions/context_extensions.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 
 import '../res/strings.dart';
@@ -37,34 +38,18 @@ class _HomePageState extends State<HomePage> {
             )
           : null;
       return Scaffold(
+        drawer: context.width < DeviceType.ipad.getMaxWidth()
+            ? Drawer(
+                child: ListView(
+                  children: _getActions(),
+                ),
+              )
+            : null,
         appBar: AppBar(
           title: appBarTitle,
-          leading: const Icon(Icons.code),
-          actions: [
-            TextButton(
-              onPressed: () {
-                _scrollTo(homeKey);
-              },
-              child: const Text(StringRes.homeSection),
-            ),
-            TextButton(
-              onPressed: () {
-                _scrollTo(aboutKey);
-              },
-              child: const Text(StringRes.aboutSection),
-            ),
-            TextButton(
-              onPressed: () {
-                _scrollTo(technologiesKey);
-              },
-              child: const Text(StringRes.technologiesSection),
-            ),
-            TextButton(
-                onPressed: () {
-                  _scrollTo(projectsKey);
-                },
-                child: Text("Projetos"))
-          ],
+          actions: context.width > DeviceType.ipad.getMaxWidth()
+              ? _getActions()
+              : [],
         ),
         body: SingleChildScrollView(
           controller: widget._scrollController,
@@ -128,6 +113,35 @@ class _HomePageState extends State<HomePage> {
         )
       ],
     );
+  }
+
+  List<Widget> _getActions() {
+    return [
+      TextButton(
+        onPressed: () {
+          _scrollTo(homeKey);
+        },
+        child: const Text(StringRes.homeSection),
+      ),
+      TextButton(
+        onPressed: () {
+          _scrollTo(aboutKey);
+        },
+        child: const Text(StringRes.aboutSection),
+      ),
+      TextButton(
+        onPressed: () {
+          _scrollTo(technologiesKey);
+        },
+        child: const Text(StringRes.technologiesSection),
+      ),
+      TextButton(
+        onPressed: () {
+          _scrollTo(projectsKey);
+        },
+        child: const Text(StringRes.projectsSection),
+      )
+    ];
   }
 
   @override
