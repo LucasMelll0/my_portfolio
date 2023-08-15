@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_portifolio/model/social_network.dart';
 import 'package:my_portifolio/res/strings.dart';
@@ -15,6 +16,10 @@ abstract class AppData {
     SocialNetwork(
       "https://github.com/LucasMelll0",
       FontAwesomeIcons.github,
+    ),
+    SocialNetwork(
+      "mailto:lucasmellorodrigues2012@gmail.com",
+      Icons.mail_rounded,
     )
   ];
 

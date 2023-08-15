@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_portifolio/res/dimens.dart';
 import 'package:my_portifolio/ui/widgets/about/about_section.dart';
 import 'package:my_portifolio/ui/widgets/intro/intro_section.dart';
+import 'package:my_portifolio/ui/widgets/intro/social_network_list.dart';
 import 'package:my_portifolio/ui/widgets/projects/projects_section.dart';
 import 'package:my_portifolio/ui/widgets/technologies/main_technologies.dart';
 import 'package:my_portifolio/utils/device_type.dart';
@@ -51,6 +53,15 @@ class _HomePageState extends State<HomePage> {
                 MainTechnologies(constraints: constraints),
                 _getDivider(constraints),
                 Projects(constraints: constraints),
+                _getDivider(constraints),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                        height: defaultImageItemSize,
+                        child: SocialNetworkList())
+                  ],
+                )
               ],
             ),
           ),
@@ -63,16 +74,16 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         SizedBox(
-          height: constraints.maxHeight * .30,
+          height: constraints.maxHeight * .20,
         ),
         Divider(
           thickness: 1,
           endIndent: constraints.maxWidth < DeviceType.mobile.getMaxWidth()
               ? null
-              : constraints.maxWidth * .30,
+              : constraints.maxWidth * .20,
         ),
         SizedBox(
-          height: constraints.maxHeight * .30,
+          height: constraints.maxHeight * .20,
         )
       ],
     );
