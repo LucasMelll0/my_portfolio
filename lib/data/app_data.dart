@@ -1,3 +1,4 @@
+import 'package:my_portifolio/model/social_network.dart';
 import 'package:my_portifolio/res/strings.dart';
 import 'package:my_portifolio/utils/assets.dart';
 
@@ -5,6 +6,17 @@ import '../model/project.dart';
 import '../model/technology.dart';
 
 abstract class AppData {
+  static List<SocialNetwork> socialNetworks = [
+    SocialNetwork(
+      "https://github.com/LucasMelll0",
+      "https://img.icons8.com/material-rounded/308/ffffff/github.png",
+    ),
+    SocialNetwork(
+      "https://www.linkedin.com/in/lucas-mello-a43887188/",
+      "https://img.icons8.com/metro/400/ffffff/linkedin.png",
+    )
+  ];
+
   static const List<Technology> mainTechnologies = [
     Technology(androidPath, StringRes.androidTechnologyTitle,
         StringRes.androidTechnologyDescription),
@@ -43,12 +55,7 @@ abstract class AppData {
         StringRes.valorantMapsApiDescription,
         StringRes.valorantMapsApiRepoUrl,
         null),
-    Project(
-      flutterPath,
-      StringRes.portfolioTitle,
-      StringRes.portfolioDescription,
-      StringRes.portfolioRepoUrl,
-      null
-    )
+    Project(flutterPath, StringRes.portfolioTitle,
+        StringRes.portfolioDescription, StringRes.portfolioRepoUrl, null)
   ];
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portifolio/ui/widgets/intro/social_network_list.dart';
 import 'package:my_portifolio/utils/assets.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 
@@ -47,7 +48,10 @@ class IntroText extends StatelessWidget {
         ),
         introMessage(constraints, theme),
         const SizedBox(height: defaultPadding),
-        socialLinks()
+        Container(
+            margin: const EdgeInsets.all(defaultPadding),
+            height: 50,
+            child: const SocialNetworkList())
       ],
     );
   }
