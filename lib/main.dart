@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           colorScheme: darkColorScheme,
           useMaterial3: true,
           fontFamily: 'Roboto'),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }

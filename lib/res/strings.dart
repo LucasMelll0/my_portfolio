@@ -1,6 +1,12 @@
 abstract class StringRes {
   static const myPortifolio = "Meu Portfólio";
 
+  // Sections / /
+  static const String homeSection = "Inicio";
+  static const String aboutSection = "Sobre Mim";
+  static const String technologiesSection = "Tecnologias";
+  static const String projectsSection = "Projetos";
+
   // Intro / /
   static const String presentation = "Olá, Meu nome é";
   static const String myName = "Lucas Mello";

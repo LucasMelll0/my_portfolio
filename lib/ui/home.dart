@@ -11,13 +11,20 @@ import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 import '../res/strings.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final ScrollController _scrollController = ScrollController();
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  GlobalKey homeKey = GlobalKey();
+  GlobalKey aboutKey = GlobalKey();
+  GlobalKey technologiesKey = GlobalKey();
+  GlobalKey projectsKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -29,13 +36,38 @@ class _HomePageState extends State<HomePage> {
                   .copyWith(color: theme.colorScheme.onBackground),
             )
           : null;
-
       return Scaffold(
         appBar: AppBar(
           title: appBarTitle,
           leading: const Icon(Icons.code),
+          actions: [
+            TextButton(
+              onPressed: () {
+                _scrollTo(homeKey);
+              },
+              child: const Text(StringRes.homeSection),
+            ),
+            TextButton(
+              onPressed: () {
+                _scrollTo(aboutKey);
+              },
+              child: const Text(StringRes.aboutSection),
+            ),
+            TextButton(
+              onPressed: () {
+                _scrollTo(technologiesKey);
+              },
+              child: const Text(StringRes.technologiesSection),
+            ),
+            TextButton(
+                onPressed: () {
+                  _scrollTo(projectsKey);
+                },
+                child: Text("Projetos"))
+          ],
         ),
         body: SingleChildScrollView(
+          controller: widget._scrollController,
           child: Padding(
             padding: EdgeInsets.symmetric(
                 vertical: constraints.maxHeight * .12,
@@ -46,13 +78,14 @@ class _HomePageState extends State<HomePage> {
                       ? CrossAxisAlignment.center
                       : CrossAxisAlignment.start,
               children: [
-                IntroSection(constraints: constraints),
+                IntroSection(key: homeKey, constraints: constraints),
                 _getDivider(constraints),
-                AboutSection(constraints: constraints),
+                AboutSection(key: aboutKey, constraints: constraints),
                 _getDivider(constraints),
-                MainTechnologies(constraints: constraints),
+                MainTechnologies(
+                    key: technologiesKey, constraints: constraints),
                 _getDivider(constraints),
-                Projects(constraints: constraints),
+                Projects(key: projectsKey, constraints: constraints),
                 _getDivider(constraints),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -67,6 +100,14 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       );
+    });
+  }
+
+  _scrollTo(GlobalKey key) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.of(context).maybePop();
+      Scrollable.ensureVisible(key.currentContext!,
+          duration: const Duration(milliseconds: 300));
     });
   }
 
@@ -87,5 +128,11 @@ class _HomePageState extends State<HomePage> {
         )
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    widget._scrollController.dispose();
+    super.dispose();
   }
 }
