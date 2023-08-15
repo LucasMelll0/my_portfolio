@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_portifolio/res/dimens.dart';
 import 'package:my_portifolio/ui/widgets/about/about_section.dart';
 import 'package:my_portifolio/ui/widgets/intro/intro_section.dart';
@@ -31,11 +32,17 @@ class _HomePageState extends State<HomePage> {
     var theme = Theme.of(context);
     return LayoutBuilder(builder: (context, constraints) {
       var appBarTitle = constraints.maxWidth >= 600
-          ? Text(
-              StringRes.myPortifolio,
-              style: theme.textTheme.titleLarge!
-                  .copyWith(color: theme.colorScheme.onBackground),
-            )
+          ? Row(
+            children: [
+              Text(
+                  StringRes.myName,
+                  style: theme.textTheme.titleLarge!
+                      .copyWith(color: theme.colorScheme.onBackground),
+                ),
+              const SizedBox(width: defaultPadding,),
+              const Icon(FontAwesomeIcons.dev),
+            ],
+          )
           : null;
       return Scaffold(
         drawer: context.width < DeviceType.ipad.getMaxWidth()
@@ -56,7 +63,9 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: EdgeInsets.symmetric(
                 vertical: constraints.maxHeight * .12,
-                horizontal: constraints.maxHeight * 0.12),
+                horizontal: context.width > DeviceType.mobile.getMaxWidth()
+                    ? constraints.maxHeight * 0.12
+                    : constraints.maxHeight * 0.05),
             child: Column(
               crossAxisAlignment:
                   constraints.maxWidth < DeviceType.mobile.getMaxWidth()
@@ -116,30 +125,45 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Widget> _getActions() {
+    var theme = Theme.of(context);
+    TextStyle? textStyle = theme.textTheme.titleLarge!.copyWith(color: theme.colorScheme.primary);
+
     return [
       TextButton(
         onPressed: () {
           _scrollTo(homeKey);
         },
-        child: const Text(StringRes.homeSection),
+        child: Text(
+          StringRes.homeSection,
+          style: textStyle,
+        ),
       ),
       TextButton(
         onPressed: () {
           _scrollTo(aboutKey);
         },
-        child: const Text(StringRes.aboutSection),
+        child: Text(
+          StringRes.aboutSection,
+          style: textStyle,
+        ),
       ),
       TextButton(
         onPressed: () {
           _scrollTo(technologiesKey);
         },
-        child: const Text(StringRes.technologiesSection),
+        child: Text(
+          StringRes.technologiesSection,
+          style: textStyle,
+        ),
       ),
       TextButton(
         onPressed: () {
           _scrollTo(projectsKey);
         },
-        child: const Text(StringRes.projectsSection),
+        child: Text(
+          StringRes.projectsSection,
+          style: textStyle,
+        ),
       )
     ];
   }

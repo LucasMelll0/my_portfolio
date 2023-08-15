@@ -34,10 +34,8 @@ class ProjectsGrid extends StatelessWidget {
 
   int _getCrossAxisCount(double deviceWidth) {
     int numOfTechnologies = AppData.mainProjects.length;
-    if (deviceWidth < DeviceType.mobile.getMaxWidth()) {
+    if (deviceWidth < DeviceType.ipad.getMaxWidth()) {
       return 1;
-    } else if (deviceWidth < DeviceType.ipad.getMaxWidth()) {
-      return 2;
     } else {
       return numOfTechnologies > 2 ? 2 : numOfTechnologies;
     }
