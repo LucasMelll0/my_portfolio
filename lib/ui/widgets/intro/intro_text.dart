@@ -47,11 +47,8 @@ class IntroText extends StatelessWidget {
           softWrap: true,
         ),
         introMessage(constraints, theme),
-        const SizedBox(height: defaultPadding),
-        Container(
-            margin: const EdgeInsets.all(defaultPadding),
-            height: 50,
-            child: const SocialNetworkList())
+        const SizedBox(height: largePadding),
+        const SizedBox(height: defaultImageItemSize ,child: SocialNetworkList()),
       ],
     );
   }

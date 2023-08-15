@@ -1,3 +1,4 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_portifolio/model/social_network.dart';
 import 'package:my_portifolio/res/strings.dart';
 import 'package:my_portifolio/utils/assets.dart';
@@ -8,12 +9,12 @@ import '../model/technology.dart';
 abstract class AppData {
   static List<SocialNetwork> socialNetworks = [
     SocialNetwork(
-      "https://github.com/LucasMelll0",
-      "https://img.icons8.com/material-rounded/308/ffffff/github.png",
+      "https://www.linkedin.com/in/lucas-mello-a43887188/",
+      FontAwesomeIcons.linkedin,
     ),
     SocialNetwork(
-      "https://www.linkedin.com/in/lucas-mello-a43887188/",
-      "https://img.icons8.com/metro/400/ffffff/linkedin.png",
+      "https://github.com/LucasMelll0",
+      FontAwesomeIcons.github,
     )
   ];
 

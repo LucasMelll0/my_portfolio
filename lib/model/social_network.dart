@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class SocialNetwork {
   SocialNetwork(
     this.url,
@@ -5,5 +7,6 @@ class SocialNetwork {
   );
 
   final String url;
-  final String image;
+  final IconData image;
 }
+
