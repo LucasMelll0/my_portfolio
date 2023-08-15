@@ -25,13 +25,13 @@ class ProjectsItem extends StatefulWidget {
 
 class _ProjectsItemState extends State<ProjectsItem> {
   Color? itemColor;
-  Color? contentColor;
+  Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     itemColor ?? {itemColor = theme.colorScheme.surfaceVariant};
-    contentColor ?? {contentColor = theme.colorScheme.onSurfaceVariant};
+    borderColor ?? {borderColor = theme.colorScheme.onSurfaceVariant};
 
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
@@ -44,7 +44,8 @@ class _ProjectsItemState extends State<ProjectsItem> {
             curve: Curves.fastOutSlowIn,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(defaultRadius),
-                color: itemColor),
+                border: Border.all(color: itemColor!, width: 1),
+                color: theme.colorScheme.surfaceVariant),
             child: Padding(
               padding: const EdgeInsets.all(largePadding),
               child: Column(
@@ -59,7 +60,7 @@ class _ProjectsItemState extends State<ProjectsItem> {
                         widget.image,
                         height: largeImageItemSize,
                         fit: BoxFit.cover,
-                        color: contentColor,
+                        color: theme.colorScheme.onSurfaceVariant,
                       ),
                     ],
                   ),
@@ -71,12 +72,12 @@ class _ProjectsItemState extends State<ProjectsItem> {
                       Text(
                         widget.title,
                         style: theme.textTheme.titleLarge!
-                            .copyWith(color: contentColor),
+                            .copyWith(color: theme.colorScheme.onSurfaceVariant),
                       ),
                       Text(
                         widget.description,
                         style: theme.textTheme.titleMedium!
-                            .copyWith(color: contentColor),
+                            .copyWith(color: theme.colorScheme.onSurfaceVariant),
                       )
                     ],
                   ),
@@ -117,14 +118,14 @@ class _ProjectsItemState extends State<ProjectsItem> {
   void _onEnter(event, ThemeData theme) {
     setState(() {
       itemColor = theme.colorScheme.primary;
-      contentColor = theme.colorScheme.onPrimary;
+      borderColor = theme.colorScheme.onPrimary;
     });
   }
 
   void _onExit(event, ThemeData theme) {
     setState(() {
       itemColor = theme.colorScheme.surfaceVariant;
-      contentColor = theme.colorScheme.onSurfaceVariant;
+      borderColor = theme.colorScheme.onSurfaceVariant;
     });
   }
 }
