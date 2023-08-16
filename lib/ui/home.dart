@@ -29,52 +29,57 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return Scaffold(
-        drawer: context.width < DeviceType.ipad.getMaxWidth()
-            ? Drawer(
-                child: ListView(
-                  children: _getActions(),
-                ),
-              )
-            : null,
-        appBar: AppBar(
-          actions: context.width > DeviceType.ipad.getMaxWidth()
-              ? _getActions()
-              : [],
-        ),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          controller: widget._scrollController,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: constraints.maxHeight * .12,
-                horizontal: context.width > DeviceType.mobile.getMaxWidth()
-                    ? constraints.maxHeight * 0.12
-                    : constraints.maxHeight * 0.05),
-            child: Column(
-              crossAxisAlignment:
-                  constraints.maxWidth < DeviceType.mobile.getMaxWidth()
-                      ? CrossAxisAlignment.center
-                      : CrossAxisAlignment.start,
-              children: [
-                IntroSection(key: homeKey, constraints: constraints),
-                _getDivider(constraints),
-                AboutSection(key: aboutKey, constraints: constraints),
-                _getDivider(constraints),
-                MainTechnologies(
-                    key: technologiesKey, constraints: constraints),
-                _getDivider(constraints),
-                Projects(key: projectsKey, constraints: constraints),
-                _getDivider(constraints),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                        height: defaultImageItemSize,
-                        child: SocialNetworkList())
-                  ],
+      var theme = Theme.of(context);
+      return Title(
+        color: theme.colorScheme.primary,
+        title: StringRes.myName,
+        child: Scaffold(
+          drawer: context.width < DeviceType.ipad.getMaxWidth()
+              ? Drawer(
+                  child: ListView(
+                    children: _getActions(),
+                  ),
                 )
-              ],
+              : null,
+          appBar: AppBar(
+            actions: context.width > DeviceType.ipad.getMaxWidth()
+                ? _getActions()
+                : [],
+          ),
+          body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            controller: widget._scrollController,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: constraints.maxHeight * .12,
+                  horizontal: context.width > DeviceType.mobile.getMaxWidth()
+                      ? constraints.maxHeight * 0.12
+                      : constraints.maxHeight * 0.05),
+              child: Column(
+                crossAxisAlignment:
+                    constraints.maxWidth < DeviceType.mobile.getMaxWidth()
+                        ? CrossAxisAlignment.center
+                        : CrossAxisAlignment.start,
+                children: [
+                  IntroSection(key: homeKey, constraints: constraints),
+                  _getDivider(constraints),
+                  AboutSection(key: aboutKey, constraints: constraints),
+                  _getDivider(constraints),
+                  MainTechnologies(
+                      key: technologiesKey, constraints: constraints),
+                  _getDivider(constraints),
+                  Projects(key: projectsKey, constraints: constraints),
+                  _getDivider(constraints),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                          height: defaultImageItemSize,
+                          child: SocialNetworkList())
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
