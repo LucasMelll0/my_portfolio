@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portifolio/ui/widgets/intro/social_network_list.dart';
 import 'package:my_portifolio/utils/assets.dart';
@@ -7,7 +6,6 @@ import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 import '../../../res/dimens.dart';
 import '../../../res/strings.dart';
 import '../../../utils/device_type.dart';
-import '../common/gradient_text.dart';
 
 class IntroText extends StatelessWidget {
   const IntroText({super.key, required this.constraints});
@@ -32,13 +30,8 @@ class IntroText extends StatelessWidget {
           softWrap: true,
         ),
         const SizedBox(height: defaultPadding),
-        GradientText(
-          text: StringRes.myName,
-          gradient: LinearGradient(colors: [
-            theme.colorScheme.primary,
-            theme.colorScheme.secondary,
-            theme.colorScheme.tertiary
-          ]),
+        Text(
+          StringRes.myName,
           style: (constraints.maxWidth < DeviceType.ipad.getMaxWidth()
                   ? theme.textTheme.displaySmall
                   : theme.textTheme.displayMedium)

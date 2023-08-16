@@ -4,8 +4,6 @@ import 'package:my_portifolio/res/strings.dart';
 import 'package:my_portifolio/utils/device_type.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 
-import '../common/gradient_text.dart';
-
 class AboutSection extends StatelessWidget {
   final BoxConstraints constraints;
 
@@ -22,13 +20,8 @@ class AboutSection extends StatelessWidget {
                 ? CrossAxisAlignment.center
                 : CrossAxisAlignment.start,
         children: [
-          GradientText(
-            text: StringRes.aboutTitle,
-            gradient: LinearGradient(colors: [
-              theme.colorScheme.primary,
-              theme.colorScheme.secondary,
-              theme.colorScheme.tertiary
-            ]),
+          Text(
+            StringRes.aboutTitle,
             style: (constraints.maxWidth < DeviceType.ipad.getMaxWidth()
                     ? theme.textTheme.titleLarge
                     : theme.textTheme.displaySmall)!
@@ -36,10 +29,11 @@ class AboutSection extends StatelessWidget {
                     color: theme.colorScheme.primary,
                     fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: largePadding,),
+          const SizedBox(
+            height: largePadding,
+          ),
           Text(
             StringRes.about,
-
             style: constraints.maxWidth < DeviceType.ipad.getMaxWidth()
                 ? theme.textTheme.bodyMedium
                 : theme.textTheme.bodyLarge,

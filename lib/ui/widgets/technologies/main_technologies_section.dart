@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portifolio/ui/widgets/technologies/main_technologies_grid.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
@@ -6,7 +5,6 @@ import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 import '../../../res/dimens.dart';
 import '../../../res/strings.dart';
 import '../../../utils/device_type.dart';
-import '../common/gradient_text.dart';
 
 class MainTechnologies extends StatelessWidget {
   const MainTechnologies({super.key, required this.constraints});
@@ -24,13 +22,8 @@ class MainTechnologies extends StatelessWidget {
                 ? CrossAxisAlignment.center
                 : CrossAxisAlignment.start,
         children: [
-          GradientText(
-            text: StringRes.mainTechnologiesTitle,
-            gradient: LinearGradient(colors: [
-              theme.colorScheme.primary,
-              theme.colorScheme.secondary,
-              theme.colorScheme.tertiary
-            ]),
+          Text(
+            StringRes.mainTechnologiesTitle,
             style: (constraints.maxWidth < DeviceType.ipad.getMaxWidth()
                     ? theme.textTheme.titleLarge
                     : theme.textTheme.displaySmall)!

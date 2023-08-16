@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portifolio/res/strings.dart';
-import 'package:my_portifolio/ui/widgets/common/gradient_text.dart';
 import 'package:my_portifolio/ui/widgets/projects/projects_grid.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
 
@@ -24,13 +22,8 @@ class Projects extends StatelessWidget {
                 ? CrossAxisAlignment.center
                 : CrossAxisAlignment.start,
         children: [
-          GradientText(
-            text: StringRes.projectsTitle,
-            gradient: LinearGradient(colors: [
-              theme.colorScheme.primary,
-              theme.colorScheme.secondary,
-              theme.colorScheme.tertiary
-            ]),
+          Text(
+            StringRes.projectsTitle,
             style: (constraints.maxWidth < DeviceType.ipad.getMaxWidth()
                     ? theme.textTheme.titleLarge
                     : theme.textTheme.displaySmall)!

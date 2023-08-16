@@ -4,7 +4,7 @@ import 'package:my_portifolio/ui/widgets/about/about_section.dart';
 import 'package:my_portifolio/ui/widgets/intro/intro_section.dart';
 import 'package:my_portifolio/ui/widgets/intro/social_network_list.dart';
 import 'package:my_portifolio/ui/widgets/projects/projects_section.dart';
-import 'package:my_portifolio/ui/widgets/technologies/main_technologies.dart';
+import 'package:my_portifolio/ui/widgets/technologies/main_technologies_section.dart';
 import 'package:my_portifolio/utils/device_type.dart';
 import 'package:my_portifolio/utils/extensions/context_extensions.dart';
 import 'package:my_portifolio/utils/extensions/device_type_extensions.dart';
