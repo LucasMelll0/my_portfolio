@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_portifolio/res/dimens.dart';
 import 'package:my_portifolio/ui/widgets/about/about_section.dart';
 import 'package:my_portifolio/ui/widgets/intro/intro_section.dart';
@@ -29,21 +28,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
     return LayoutBuilder(builder: (context, constraints) {
-      var appBarTitle = constraints.maxWidth >= 600
-          ? Row(
-            children: [
-              Text(
-                  StringRes.myName,
-                  style: theme.textTheme.titleLarge!
-                      .copyWith(color: theme.colorScheme.onBackground),
-                ),
-              const SizedBox(width: defaultPadding,),
-              const Icon(FontAwesomeIcons.dev),
-            ],
-          )
-          : null;
       return Scaffold(
         drawer: context.width < DeviceType.ipad.getMaxWidth()
             ? Drawer(
@@ -53,12 +38,12 @@ class _HomePageState extends State<HomePage> {
               )
             : null,
         appBar: AppBar(
-          title: appBarTitle,
           actions: context.width > DeviceType.ipad.getMaxWidth()
               ? _getActions()
               : [],
         ),
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           controller: widget._scrollController,
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -109,7 +94,9 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         SizedBox(
-          height: constraints.maxHeight * .20,
+          height: context.width <= DeviceType.mobile.getMaxWidth()
+              ? constraints.maxHeight * .10
+              : constraints.maxHeight * .20,
         ),
         Divider(
           thickness: 1,
@@ -118,7 +105,9 @@ class _HomePageState extends State<HomePage> {
               : constraints.maxWidth * .20,
         ),
         SizedBox(
-          height: constraints.maxHeight * .20,
+          height: context.width <= DeviceType.mobile.getMaxWidth()
+              ? constraints.maxHeight * .10
+              : constraints.maxHeight * .20,
         )
       ],
     );
@@ -126,7 +115,8 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _getActions() {
     var theme = Theme.of(context);
-    TextStyle? textStyle = theme.textTheme.titleLarge!.copyWith(color: theme.colorScheme.primary);
+    TextStyle? textStyle =
+        theme.textTheme.titleLarge!.copyWith(color: theme.colorScheme.primary);
 
     return [
       TextButton(
